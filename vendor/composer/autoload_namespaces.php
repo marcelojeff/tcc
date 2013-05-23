@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Zend\\' => $vendorDir . '/zendframework/zendframework/library',
-    'ZendTest\\' => $vendorDir . '/zendframework/zendframework/tests',
-    'Everyman\\Neo4j' => $vendorDir . '/everyman/neo4jphp/lib',
+    'Zend\\' => array($vendorDir . '/zendframework/zendframework/library'),
+    'ZendTest\\' => array($vendorDir . '/zendframework/zendframework/tests'),
+    'Everyman\\Neo4j' => array($vendorDir . '/everyman/neo4jphp/lib'),
 );
