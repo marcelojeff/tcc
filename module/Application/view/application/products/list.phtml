@@ -1,0 +1,10 @@
+<?php foreach ($this->products as $node): ?>
+	<p>
+		<a href="<?= $this->url('flavors', array('action' => 'list', 'product' => $node['product']->getID(), 'pizzeria' => $this->pizzeria)) //TODO pass flavor count?>">
+			<?= $node['type']->getProperty('name') . ' ' . $node['size']->getProperty('name'); ?>
+		</a><br/>
+		<?= $node['relation']->getProperty('flavors') ?> Sabores<br/>
+		R$: <?= $node['relation']->getProperty('price') ?><br/>
+		<?= $node['relation']->getProperty('slices') ?> Pedaços<br/>
+	</p>
+<?php endforeach;?>

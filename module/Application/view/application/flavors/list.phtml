@@ -1,0 +1,9 @@
+<?php foreach ($this->flavors as $node): ?>
+    <p>
+        <b><?= $node['flavorName']->getProperty('name') ?></b><br/>
+        <?php foreach ($this->ingredients[$node['flavorName']->getId()] as $ingredient): ?>
+            <?= $ingredient->getProperty('name'). ', ' ?>
+        <?php endforeach; ?>
+        
+    </p>
+<?php endforeach;?>
