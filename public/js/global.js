@@ -3,19 +3,21 @@ $(document).ready(function(){
 	//Trigger Popover with semantic content
 	$('.semantic_info').clickover({ 
 	    html : true,
+	    placement: 'bottom',
 	    global_close: true,
 	    content: function() {
 	      //get content throught AJAX
 	      $('#semantic_content').empty();
-	      $('#semantic_content').append('<a href="#myModal" class="link test1" id="test1" data-toggle="modal">Mozarela</a>');
-	      $('#semantic_content').append('<button data-dismiss="clickover" class="btn">Close</button>');
+	      $('#semantic_content').append('Toucinho, toicinho ou bacon é a gordura subcutânea do porco, usada em culinária. Pode ser encontrado fresco, salgado ou defumado, caso em que recebe o nome de toucinho fumeiro, toucinho fumado (ou defumado) ou bacon. A gordura do toucinho pode também ser derretida, para ser usada como tal, chamada banha.');
+	      $('#semantic_content').append('<p><a href="#myModal" class="link test1" id="test1" data-toggle="modal">Outros idiomas</a></p>');
+	      //$('#semantic_content').append('<button data-dismiss="clickover" class="btn">Close</button>');
 	      return $('#semantic_content').html();
 	    }
 	});
 	//Put dynamic data onto Modal
 	$('.test1').live('click',function(e) {
-	    $('.modal-body').empty();
-	    $('.modal-body').append("dynamic AJAX information");
+	    //$('.modal-body').empty();
+	    //$('.modal-body').append("<p></p>");
 	});
 	
 });	
