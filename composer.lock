@@ -51,16 +51,16 @@
         },
         {
             "name": "zendframework/zendframework",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "release-2.2.0"
+                "reference": "release-2.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/release-2.2.0",
-                "reference": "release-2.2.0",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/release-2.2.1",
+                "reference": "release-2.2.1",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +159,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2013-05-15 10:27:32"
+            "time": "2013-06-12 20:13:34"
         }
     ],
     "packages-dev": [

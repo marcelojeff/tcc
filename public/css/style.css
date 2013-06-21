@@ -35,3 +35,13 @@ div.container a.brand {
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
+
+.span6 .form-center{
+	width: 250px;
+}
+div.sign-in .form-center{
+	
+}
+.form-center{
+	margin: 0 auto;
+}

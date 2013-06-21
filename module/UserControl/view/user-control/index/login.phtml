@@ -1,0 +1,47 @@
+<?php $this->headTitle('Login'); ?>
+
+<?php
+$form = $this->form;
+// $form->setAttribute('action', $this->url('album', array('action' => 'add')));
+$form->setAttribute('class', 'form-center');
+$form->prepare();
+?>
+<div class="row">
+    <div class="span6">
+        <div class="hero-unit">
+            <?= $this->form()->openTag($form); ?>
+            <div class="control-group">
+                <?//= $this->formLabel($form->get('email')); ?>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on">@</span>
+                        <?= $this->formInput($form->get('email')); ?>
+                    </div>    
+                </div>
+            </div>
+            <div class="control-group">
+                <?//= $this->formLabel($form->get('password')); ?>
+                <div class="controls">
+                    <div class="input-prepend">
+                        <span class="add-on">#</span>
+                        <?= $this->formInput($form->get('password')); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+            	<div class="controls">
+                    <?= $this->formSubmit($form->get('submit')); ?>
+                </div>
+            </div>
+            <?= $this->form()->closeTag(); ?>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="hero-unit">
+        	<h3>Novo <span class="zf-green">aki</span>?</h3>
+        	<p><a class="btn btn-success" href="/pizzerias/">Cadastrar-se</a></p>
+        	<p>É facil e rápido e bla bla bla!</p>
+            
+        </div>
+    </div>
+</div>

@@ -19,6 +19,32 @@ return array(
                     )
                 )
             ),
+            'application' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/application',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller' => 'Index',
+                        'action' => 'index'
+                    )
+                ),
+                'may_terminate' => true,
+                //TODO configure params
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                            ),
+                            'defaults' => array()
+                        )
+                    )
+                )
+            ),
             'pizzerias' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -78,7 +104,7 @@ return array(
         )
     ),
     'translator' => array(
-        'locale' => 'pt_BR',
+        'locale' => 'en-US',
         'translation_file_patterns' => array(
             array(
                 'type' => 'gettext',
@@ -101,6 +127,9 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view'
-        )
+        ),
+        'strategies' => array(
+        		'ViewJsonStrategy',
+        ),
     )
 );

@@ -1,19 +1,85 @@
 $(document).ready(function(){
   
-	//Trigger Popover with semantic content
-	$('.semantic_info').clickover({ 
+	$(".semantic_info").click(function() {
+	    el = $(this);
+	    $.get('/flavors/getAbstract', {resource: $(this).data('resource')}, function(response) {
+	    	var $content = response[0].abst.value;
+	    	$content += '<p><a href="#myModal" class="link test1" id="test1" data-toggle="modal">Outros idiomas</a></p>';
+	    	//$content += '<button data-dismiss="clickover" class="btn">Close</button>';
+	    	el.unbind('click').clickover({
+	    		global_close: true,
+	    		content: $content,
+		        //title: 'Dynamic response!',
+		        html: true,
+		        placement: 'bottom',
+	        
+	        //delay: {show: 500, hide: 100}
+	      }).clickover('show');
+	    });
+	  });
+
+	/*/Trigger Popover with semantic content
+	$('.semantic_info').bind('click', function(event){
+		obj = this;
+		$.get('/flavors/getAbstract', {resource: $(obj).data('resource')}, function(data){
+    		//console.log(data[0].abst.value);
+    		var text = data[0].abst.value;
+    		$(obj).unbind('click');
+
+    		$(obj).clickover({ 
+    		    html : true,
+    		    placement: 'bottom',
+    		    global_close: true,
+    		    content: function() {
+    		    	 $('#semantic_content').empty();
+    		  	     $('#semantic_content').append(text);
+    		  	     $('#semantic_content').append('<p><a href="#myModal" class="link test1" id="test1" data-toggle="modal">Outros idiomas</a></p>');
+    		  	      //clickover.resetPosition();
+    		  	      //$('#semantic_content').append('<button data-dismiss="clickover" class="btn">Close</button>');
+    		  	     return $('#semantic_content').html();
+    		    	}
+    		    	
+    		    });
+    		
+  	      
+    	});
+	});
+	/*$('.semantic_info').clickover({ 
 	    html : true,
 	    placement: 'bottom',
 	    global_close: true,
 	    content: function() {
+	    	 //var clickover = this;
 	      //get content throught AJAX
-	      $('#semantic_content').empty();
-	      $('#semantic_content').append('Toucinho, toicinho ou bacon é a gordura subcutânea do porco, usada em culinária. Pode ser encontrado fresco, salgado ou defumado, caso em que recebe o nome de toucinho fumeiro, toucinho fumado (ou defumado) ou bacon. A gordura do toucinho pode também ser derretida, para ser usada como tal, chamada banha.');
-	      $('#semantic_content').append('<p><a href="#myModal" class="link test1" id="test1" data-toggle="modal">Outros idiomas</a></p>');
-	      //$('#semantic_content').append('<button data-dismiss="clickover" class="btn">Close</button>');
-	      return $('#semantic_content').html();
+	    	$.get('/flavors/getAbstract', {resource: $(this).data('resource')}, function(data){
+	    		//console.log(data[0].abst.value);
+	    		var text = data[0].abst.value;
+	    		$('#semantic_content').empty();
+	  	      $('#semantic_content').append(text);
+	  	      $('#semantic_content').append('<p><a href="#myModal" class="link test1" id="test1" data-toggle="modal">Outros idiomas</a></p>');
+	  	      //clickover.resetPosition();
+	  	      //$('#semantic_content').append('<button data-dismiss="clickover" class="btn">Close</button>');
+	  	      
+	    	});
+	    	return $('#semantic_content').html();
 	    }
-	});
+	    
+	 	/*onShown: function(){
+	        //save the clickover to call later...
+	        var clickover = this;
+	        //console.log(clickover.options.resource);
+	        $.get('/flavors/getAbstract?resource='+clickover.options.resource, function(data){
+	    		
+	    		var text = data[0].abst.value;
+	    		console.log(text);
+	    		$('#semantic_content').empty();
+	  	      	$('#semantic_content').html(text);
+		  	    $('#semantic_content').append('<p><a href="#myModal" class="link test1" id="test1" data-toggle="modal">Outros idiomas</a></p>');
+		  	    clickover.resetPosition();
+	        });
+	        clickover.resetPosition();
+	 	}*
+	});*/
 	//Put dynamic data onto Modal
 	$('.test1').live('click',function(e) {
 	    //$('.modal-body').empty();

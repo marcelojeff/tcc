@@ -1,3 +1,5 @@
+<h1>Escolha o produto</h1>
+<hr>
 <?php foreach ($this->products as $node): ?>
 	<p>
 		<a href="<?= $this->url('flavors', array('action' => 'list', 'product' => $node['product']->getID(), 'pizzeria' => $this->pizzeria)) //TODO pass flavor count?>">
@@ -7,4 +9,5 @@
 		R$: <?= $node['relation']->getProperty('price') ?><br/>
 		<?= $node['relation']->getProperty('slices') ?> Pedaços<br/>
 	</p>
+	<hr>
 <?php endforeach;?>

@@ -1,7 +1,10 @@
+<h1>Escolha a pizzaria</h1>
+<hr>
 <?php foreach ($this->pizzerias as $pizzeria): ?>
 <p>
 	<a href="<?= $this->url('products', array('action'=>'list', 'pizzeria'=>$pizzeria->getId())) ?>">
         <?= $pizzeria->getProperty('name'); ?>
 	</a>
 </p>
+<hr>
 <?php endforeach;?>

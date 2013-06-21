@@ -34,7 +34,7 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                            <li class="active"><a href="<?php echo $this->url('pizzerias') ?>"><?php echo $this->translate('Pizzerias') ?></a></li>
+                            <li><a href="<?php //echo $this->url('pizzerias') ?>"><?php echo $this->translate('Pizzerias') ?></a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -42,11 +42,12 @@
         </div>
         <div class="container">
             <?php echo $this->content; ?>
-            <!--<hr>
+            <br clear="all" />
+            <hr>
             <footer>
-                <!--<p>&copy; 2013 by Rox Web Solutions Ltd. <?php //echo $this->translate('All rights reserved.') ?></p> 
-            </footer>-->
+               <p>&copy; 2013 by Rox Web Solutions Ltd. <?php echo $this->translate('All rights reserved.') ?></p> 
+            </footer>
         </div> <!-- /container -->
-        <?php //echo $this->inlineScript() ?>
+        <?php echo $this->inlineScript() ?>
     </body>
 </html>
