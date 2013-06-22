@@ -2,9 +2,9 @@ $(document).ready(function(){
   
 	$(".semantic_info").click(function() {
 	    el = $(this);
-	    $.get('/flavors/getAbstract', {resource: $(this).data('resource')}, function(response) {
+	    $.get('/flavors/getAbstract', {resource: el.data('resource')}, function(response) {
 	    	var $content = response[0].abst.value;
-	    	$content += '<p><a href="#myModal" class="link test1" id="test1" data-toggle="modal">Outros idiomas</a></p>';
+	    	$content += '<p><a href="#myModal" id="languages" data-name="'+el.data('original-title')+'" data-resource="'+el.data('resource')+'" data-toggle="modal">Outros idiomas</a></p>';
 	    	//$content += '<button data-dismiss="clickover" class="btn">Close</button>';
 	    	el.unbind('click').clickover({
 	    		global_close: true,
@@ -15,7 +15,7 @@ $(document).ready(function(){
 	        
 	        //delay: {show: 500, hide: 100}
 	      }).clickover('show');
-	    });
+	    }, 'json');
 	  });
 
 	/*/Trigger Popover with semantic content
@@ -81,10 +81,39 @@ $(document).ready(function(){
 	 	}*
 	});*/
 	//Put dynamic data onto Modal
-	$('.test1').live('click',function(e) {
-	    //$('.modal-body').empty();
-	    //$('.modal-body').append("<p></p>");
+	//TODO tentar live pro clickover
+	$('#languages').live('click',function(e) {
+	    $('.modal-body').empty();
+	    $('#modal-label').empty();
+	    obj = $(this);
+	    $('#modal-label').append(obj.data('name'));
+	    $.get('/flavors/getOtherLanguages', {resource: obj.data('resource')}, function(response) {
+	 		$.each(response, function(index, language){
+	 			//console.log(language);
+	 			
+	 			$('.modal-body').append(language.iso.value + " - ");
+	 			$('.modal-body').append(language.name.value);
+	 			$('.modal-body').append(' | <a class="listen" href="#" data-q="'+language.name.value+'" data-tl="'+language.iso.value+'" data-name="'+obj.data('resource')+'">Ouvir</a><br/>');
+	 		});
+	 		listHandle();	    	
+	    }, 'json');
 	});
+
+	function listHandle(){
+		$('.listen').click(function(event){
+			event.preventDefault();
+			//console.log('blaaaaa');
+			$("#player").empty();
+			$url = $(this).attr("href");
+			$.get('/flavors/getAudio', {name:$(this).data('name'), q:$(this).data('q'), tl:$(this).data('tl')}, function(data){
+				$("#player").append('<object type="application/x-shockwave-flash" data="/flash/dewplayer.swf" width="1" height="0" id="dewplayer" name="dewplayer"> \
+						<param name="movie" value="/flash/dewplayer.swf" /> \
+						<param name="flashvars" value="mp3='+data.file+'&autostart=1" /> \
+						<param name="wmode" value="transparent" /> \
+						</object>');
+			}, "json");
+	    });	
+	}
 	
 });	
   
