@@ -106,11 +106,16 @@ $(document).ready(function(){
 			$("#player").empty();
 			$url = $(this).attr("href");
 			$.get('/flavors/getAudio', {name:$(this).data('name'), q:$(this).data('q'), tl:$(this).data('tl')}, function(data){
-				$("#player").append('<object type="application/x-shockwave-flash" data="/flash/dewplayer.swf" width="1" height="0" id="dewplayer" name="dewplayer"> \
-						<param name="movie" value="/flash/dewplayer.swf" /> \
-						<param name="flashvars" value="mp3='+data.file+'&autostart=1" /> \
-						<param name="wmode" value="transparent" /> \
-						</object>');
+				if(data.exists){
+					$("#player").append('<object type="application/x-shockwave-flash" data="/flash/dewplayer.swf" width="1" height="0" id="dewplayer" name="dewplayer"> \
+					<param name="movie" value="/flash/dewplayer.swf" /> \
+					<param name="flashvars" value="mp3='+data.file+'&autostart=1" /> \
+					<param name="wmode" value="transparent" /> \
+					</object>');
+				} else {
+					alert('Audio indisponivel!');
+				}
+				
 			}, "json");
 	    });	
 	}

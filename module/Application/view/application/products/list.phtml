@@ -2,11 +2,15 @@
 <hr>
 <?php foreach ($this->products as $node): ?>
 	<p>
-		<a href="<?= $this->url('flavors', array('action' => 'list', 'product' => $node['product']->getID(), 'pizzeria' => $this->pizzeria)) //TODO pass flavor count?>">
-			<?= $node['type']->getProperty('name') . ' ' . $node['size']->getProperty('name'); ?>
-		</a><br/>
-		<?= $node['relation']->getProperty('flavors') ?> Sabores<br/>
-		R$: <?= $node['relation']->getProperty('price') ?><br/>
+	    <h4><?= $node['type']->getProperty('name') . ' ' . $node['size']->getProperty('name'); ?></h4>
+	    <?php for($i=1; $i <= $node['relation']->getProperty('flavors');$i++):?>
+    		<a href="<?= $this->url('flavors', array('action' => 'list', 'product' => $node['product']->getID(), 'pizzeria' => $this->pizzeria, 'flavors' => $i)) ?>">
+    			<?= $i //TODO plural ?> Sabores
+    		</a>
+    		<?= ($i < $node['relation']->getProperty('flavors'))?' | ':'' ?> 
+		<?php endfor; ?>
+		<br/>
+		R$: <?= number_format($node['relation']->getProperty('price'),2) ?><br/>
 		<?= $node['relation']->getProperty('slices') ?> Pedaços<br/>
 	</p>
 	<hr>

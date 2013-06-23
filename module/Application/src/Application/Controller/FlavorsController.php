@@ -19,7 +19,7 @@ use Zend\View\Model\JsonModel;
 class FlavorsController extends AbstractActionController
 {
 
-    private function getUrl($url, $proxy = true){
+    private function getUrl($url, $proxy = false){
     	//echo $url;
     	$ch = curl_init();
     	$timeout = 0; // set to zero for no timeout
@@ -59,11 +59,13 @@ class FlavorsController extends AbstractActionController
             $url = "http://translate.google.com/translate_tts?ie=UTF-8&tl=$tl&q=$q";
             
             $soundfile = $this->getUrl( $url );
-            
-            file_put_contents ( $fileName, $soundfile );
+            if($soundfile){
+                file_put_contents ( $fileName, $soundfile );
+            } else {
+                return new JsonModel(array('exists' => false));
+            }
         }
-        $result = new JsonModel(array('file' => str_replace('public', '', $fileName)));
-        return $result;
+        return new JsonModel(array('exists' => true, 'file' => str_replace('public', '', $fileName)));
     }
     public function getOtherLanguagesAction(){
         $resource = 'http://dbpedia.org/resource/' . $_GET['resource'];

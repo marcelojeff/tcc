@@ -76,7 +76,7 @@ return array(
             'flavors' => array(
                 'type' => 'segment',
                 'options' => array(
-                    'route' => '/flavors[/][:action][/:pizzeria[/:product]]',
+                    'route' => '/flavors[/][:action][/:pizzeria[/:product[/:flavors]]]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'product' => '[0-9]+',
