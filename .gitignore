@@ -1,6 +1,7 @@
 .buildpath
 .project
 .settings/
+*.txt
 vendor/everyman/
 vendor/zendframework/
 
