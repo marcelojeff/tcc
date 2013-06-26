@@ -1,0 +1,16 @@
+<table class="table table-hover">
+  <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+  </thead>
+  <tbody>
+  <?php foreach ($this->flavors as $node): ?>
+  <tr>
+    <td><?= $node['flavors']->getProperty('name') ?></td>
+    <td><a href="/application/flavors/ingredients/<?= $node['flavors']->getID()?>" class="">Ingredientes</a></td>
+  </tr>
+  <?php endforeach; ?>
+  </tbody>
+</table>

@@ -1,0 +1,21 @@
+<a href="/application/ingredients/new" class="btn btn-success">Criar</a>
+<table class="table table-hover">
+  <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Link</th>
+      </tr>
+  </thead>
+  <tbody>
+  <?php foreach ($this->ingredients as $ingredient): ?>
+  <tr>
+    <td><?= $ingredient->getProperty('name') ?></td>
+    <td><?= $ingredient->getProperty('link') ?></td>
+  </tr>
+  <?php endforeach; ?>
+  </tbody>
+</table>
+
+
+    
+

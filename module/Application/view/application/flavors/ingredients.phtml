@@ -1,0 +1,11 @@
+<form method="post">
+<input type="hidden" name="flavor" value="<?= $this->flavorId ?>">
+<?php foreach ($this->ingredientsOn as $ingredient): ?>
+	<input type="checkbox" name="ingredients[]" value="<?= $ingredient->getID() ?>" checked><?= $ingredient->getProperty('name') ?> 
+<?php endforeach; ?>
+<?php foreach ($this->ingredientsOut as $ingredient): ?>
+	<input type="checkbox" name="ingredients[]" value="<?= $ingredient->getID() ?>"><?= $ingredient->getProperty('name') ?> 
+<?php endforeach; ?>
+
+<input type="submit" value="Salvar" class="btn btn-success">
+</form>

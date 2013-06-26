@@ -35,7 +35,7 @@ return array(
                     'default' => array(
                         'type' => 'Segment',
                         'options' => array(
-                            'route' => '/[:controller[/:action]]',
+                            'route' => '/[:controller[/:action[/:id]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
@@ -95,7 +95,8 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'Application\Controller\Pizzerias' => 'Application\Controller\PizzeriasController',
             'Application\Controller\Products' => 'Application\Controller\ProductsController',
-            'Application\Controller\Flavors' => 'Application\Controller\FlavorsController'
+            'Application\Controller\Flavors' => 'Application\Controller\FlavorsController',
+            'Application\Controller\Ingredients' => 'Application\Controller\IngredientsController'
         )
     ),
     'service_manager' => array(

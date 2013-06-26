@@ -1,0 +1,39 @@
+<?php $this->headTitle('Novo'); ?>
+
+<?php
+$form = $this->form;
+// $form->setAttribute('action', $this->url('album', array('action' => 'add')));
+$form->setAttribute('class', 'form-center');
+$form->prepare();
+?>
+<div class="row">
+    <div class="span6">
+        <div class="hero-unit">
+            <?= $this->form()->openTag($form); ?>
+            <div class="control-group">
+                <?//= $this->formLabel($form->get('email')); ?>
+                <div class="controls">
+                    <div class="input">
+                        
+                        <?= $this->formInput($form->get('name')); ?>
+                    </div>    
+                </div>
+            </div>
+            <div class="control-group">
+                <?//= $this->formLabel($form->get('password')); ?>
+                <div class="controls">
+                    <div class="input">
+                        
+                        <?= $this->formInput($form->get('link')); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+            	<div class="controls">
+                    <?= $this->formSubmit($form->get('submit')); ?>
+                </div>
+            </div>
+            <?= $this->form()->closeTag(); ?>
+        </div>
+    </div>
+</div>
