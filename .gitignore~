@@ -4,5 +4,4 @@
 *.txt
 vendor/everyman/
 vendor/zendframework/
-public/audio/
 
