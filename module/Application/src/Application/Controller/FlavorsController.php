@@ -5,6 +5,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Model\Flavors;
 use Zend\View\Model\JsonModel;
+use Application\Model\Ingredients;
 
 /**
  * FlavorsController
@@ -37,17 +38,31 @@ class FlavorsController extends AbstractActionController
     	curl_close($ch);
     	return $file_contents;
     }
-    public function indexAction ()
-    {
-        // TODO Auto-generated FlavorsController::indexAction() default action
-        return new ViewModel();
+    public function indexAction(){
+    	$model = new Flavors();
+    	$results = $model->getAll();
+    	return array(
+            'flavors' => $results,
+        );
+    }
+    //TODO refazer com zend form
+    public function ingredientsAction(){
+        $model = new Flavors();        
+        if(!empty($_POST)){
+            $model->setIngredients($_POST['ingredients'], $_POST['flavor']);
+        }
+        $flavor = $this->params('id');
+        $model = new Ingredients();
+        $result = $model->getListByFlavor($flavor);
+        return array('ingredientsOn' => $result['on'],
+                    'ingredientsOut' => $result['out'],
+                    'flavorId' => $flavor
+        );
     }
     public function getAudioAction(){
         $q =  $_GET ['q'];
         $tl = $_GET ['tl'];
         $name = $_GET['name'];
-        //TODO arrumar isso
-        $basePath = $this->getRequest()->getBasePath();
         $fileName = "public/audio/$name-$tl.mp3";
         
         if(!file_exists($fileName)){
@@ -126,4 +141,5 @@ class FlavorsController extends AbstractActionController
             'ingredients' => $results['ingredients']
         );
     }
+    
 }

@@ -1,5 +1,7 @@
 $(document).ready(function(){
   
+	$('a').tooltip();
+	
 	$(".semantic_info").click(function() {
 	    el = $(this);
 	    $.get('/flavors/getAbstract', {resource: el.data('resource')}, function(response) {

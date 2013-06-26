@@ -1,11 +1,13 @@
 <div id="player"></div>
 <h1>Escolha os sabores</h1>
 <hr/>
+<div class="row">
+<div class="span9">
 <?php foreach ($this->flavors as $node): ?>
     <p>
         <h4>
             <?= $node['flavorName']->getProperty('name') ?>
-            <a href="#" class="btn btn-warning btn-small">Adicionar</a>
+            <a class="btn btn-warning btn-small accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFlavors">Adicionar</a>
         </h4>
         Ingredientes: 
         <?php foreach ($this->ingredients[$node['flavorName']->getId()] as $ingredient): ?>
@@ -20,6 +22,98 @@
     <hr/>
     </p>
 <?php endforeach; ?>
+</div>
+
+				<div class="span3">
+
+			        <div class="tabbable box">
+			        	
+					    <ul class="nav nav-tabs nav-pills">
+					    	<li class="active"><a href="#tab1" data-toggle="tab">Pizza Grande</a></li>
+					    </ul>
+					    	<div class="tab-content">
+					    		<div class="tab-pane active" id="tab1">
+
+					    			<div class="accordion" id="accordion2">
+					    				<div class="accordion-group">
+											<div class="accordion-heading">
+												<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseValue">
+												Valor
+												</a>
+											</div>
+											<div id="collapseValue" class="accordion-body collapse in">
+												<div class="accordion-inner">
+													<table>
+														<tr>
+															<th>Pizza</th>
+															<th></th>
+															<th>Borda</th>
+															<th></th>
+															<th>Total</th>
+														</tr>
+														<tr>
+															<td>R$:10,00</td>
+															<td> + </td>
+															<td>R$:0,00</td>
+															<td> = </td>
+															<td>R$:10,00</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="accordion-group">
+											<div class="accordion-heading">
+												<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseCount">
+												Quantidade
+												</a>
+											</div>
+											<div id="collapseCount" class="accordion-body collapse">
+												<div class="accordion-inner">
+													<div>
+														<select name="" id="">
+															<option value="">1 unidade</option>
+															<option value="">2 unidades</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="accordion-group">
+											<div class="accordion-heading">
+												<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseFlavors">
+												Sabores
+												</a>
+											</div>
+											<div id="collapseFlavors" class="accordion-body collapse">
+												<div class="accordion-inner">
+													<div>Margherita <a href="#" data-placement="right" data-toggle="tooltip" title="Remover Margherita"><i class="icon-remove"></i></a></div>
+												</div>
+											</div>
+										</div>
+										<!--<div class="accordion-group">
+											<div class="accordion-heading">
+												<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseBorder">
+												Borda
+												</a>
+											</div>
+											<div id="collapseBorder" class="accordion-body collapse">
+												<div class="accordion-inner">
+													<div>Catupery <a href="#" data-placement="right" data-toggle="tooltip" title="Remover Bacon"><i class="icon-remove"></i></a></div>
+													
+												</div>
+											</div>
+										</div> -->
+									</div>
+									<hr/>
+									<div><b>Valor total do pedido:</b> R$:10,00</div>
+			        	
+					    		</div>
+					    </div>
+				    </div>
+				</div>
+			</div> 
+
 
 
 
@@ -39,3 +133,5 @@
 		<!-- <button class="btn btn-primary">Save changes</button> -->
 	</div>
 </div>
+
+
