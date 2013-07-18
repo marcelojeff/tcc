@@ -25,19 +25,6 @@
 <?php endforeach; ?>
 </div>
 
-<div class="popover clickover fade right in" style="top: 1792.87px; left: 172px; display: block;">
-<div class="arrow"></div>
-<div class="popover-inner">
-<h3 class="popover-title">No Global Close</h3>
-<div class="popover-content">
-<p>
-You must click close button
-<button class="btn" data-dismiss="clickover">Close</button>
-</p>
-</div>
-</div>
-</div>
-
   <div class="span5">
 
   <div class="tabbable box">

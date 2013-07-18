@@ -12,7 +12,7 @@ $(document).ready(function(){
 	    		global_close: true,
 	    		content: $content,
 		        //title: 'Dynamic response!',
-		        html: true,
+		        html: false,
 		        placement: 'bottom',
 	        
 	        //delay: {show: 500, hide: 100}

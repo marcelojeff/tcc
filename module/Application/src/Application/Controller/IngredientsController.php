@@ -7,7 +7,7 @@ use Application\Model\Ingredients;
 
 class IngredientsController extends AbstractActionController
 {
-    //TODO desfazer o XGH
+    //TODO desfazer o eXtreme GoHorse
     public function newAction() {
         if(!empty($_POST)){
             $model = new Ingredients();
